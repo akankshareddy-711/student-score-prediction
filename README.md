@@ -1,16 +1,14 @@
-# Student Score Prediction
+# Student Data Analyzer
 
-This project uses Machine Learning to predict student exam scores based on the number of hours studied.
+This project analyzes student academic performance using Python.
 
 Technologies Used:
 - Python
-- Scikit-learn
-- NumPy
+- Pandas
 - Matplotlib
 
-The model is trained using Linear Regression.
-
 Features:
-- Train ML model on study hours dataset
-- Predict exam scores
-- Visualize results using graphs
+- Data cleaning and preprocessing
+- Calculate average scores
+- Identify top-performing students
+- Visualize results using charts

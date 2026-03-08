@@ -1,24 +1,30 @@
-import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
 
-# Dataset: study hours vs scores
-hours = np.array([1,2,3,4,5,6,7,8]).reshape(-1,1)
-scores = np.array([20,30,40,50,60,70,80,90])
+# Create sample student dataset
+data = {
+    "Name": ["Alice", "Bob", "Charlie", "David", "Eva"],
+    "Math": [85, 70, 90, 60, 88],
+    "Science": [78, 65, 92, 55, 80],
+    "English": [82, 75, 88, 62, 85]
+}
 
-# Train model
-model = LinearRegression()
-model.fit(hours, scores)
+df = pd.DataFrame(data)
 
-# Predict score for 9 hours study
-prediction = model.predict([[9]])
+# Calculate average score
+df["Average"] = df[["Math", "Science", "English"]].mean(axis=1)
 
-print("Predicted score for 9 hours study:", prediction[0])
+print("Student Data:")
+print(df)
 
-# Visualization
-plt.scatter(hours, scores, color="blue")
-plt.plot(hours, model.predict(hours), color="red")
-plt.xlabel("Study Hours")
-plt.ylabel("Scores")
-plt.title("Student Score Prediction")
+# Top performer
+top_student = df.loc[df["Average"].idxmax()]
+print("\nTop Performer:")
+print(top_student)
+
+# Plot average scores
+plt.bar(df["Name"], df["Average"])
+plt.title("Student Average Scores")
+plt.xlabel("Student")
+plt.ylabel("Average Score")
 plt.show()
